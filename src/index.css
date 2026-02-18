@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-google-blue: #4285F4;
+  --color-google-red: #EA4335;
+  --color-google-yellow: #FBBC05;
+  --color-google-green: #34A853;
+  --color-google-gray: #5f6368;
+
+  --font-sans: "Inter", sans-serif;
+}
+
+@layer base {
+
+  html,
+  body {
+    background-color: #f8f9fa !important;
+    color: #1f2937;
+    /* Softer gray instead of harsh black */
+  }
+}
+
+@layer utilities {
+  .timeline-line::before {
+    content: '';
+    @apply absolute left-4 top-0 h-full w-0.5 bg-gray-200 transform -translate-x-1/2;
+  }
+}
+
+/* Global Smooth Transitions */
+body {
+  @apply transition-colors duration-700 ease-in-out;
+}
+
+*,
+*::before,
+*::after {
+  @apply transition-all duration-700 ease-in-out;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-300 dark:bg-gray-700 rounded-full;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-400 dark:bg-gray-600;
+}
+
+/* Waving hand animation */
+@keyframes wave {
+
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+
+  10%,
+  30% {
+    transform: rotate(14deg);
+  }
+
+  20%,
+  40% {
+    transform: rotate(-8deg);
+  }
+
+  50%,
+  70% {
+    transform: rotate(14deg);
+  }
+
+  60%,
+  80% {
+    transform: rotate(-4deg);
+  }
+
+  90% {
+    transform: rotate(0deg);
+  }
+}
+
+.animate-wave {
+  display: inline-block;
+  animation: wave 2.5s ease-in-out infinite;
+  transform-origin: 70% 70%;
+}
